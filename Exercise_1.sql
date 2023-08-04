@@ -10,7 +10,6 @@ create or replace PACKAGE BODY program_to_manage_products IS
 --funcion will be returning if name of product already exists in table, i know that i could use constraint but i did it for own exercise:)
 FUNCTION check_if_product_already_exists(new_product_name VARCHAR2) RETURN BOOLEAN IS
         number_of_the_same_products NUMBER := 0 ;
-        exists_or_not BOOLEAN;
             BEGIN
                 SELECT COUNT(*)INTO number_of_the_same_products FROM products WHERE UPPER(product_name) = UPPER(new_product_name); 
                     IF( number_of_the_same_products = 0) THEN RETURN FALSE;
@@ -42,7 +41,6 @@ PROCEDURE add_product (new_product_name VARCHAR2) IS
 --Procedure will remove product with id given by user after checked if that product are in table
 PROCEDURE remove_product(id_product_to_remove NUMBER) IS
     name_of_product VARCHAR2(50); -- into this variable i put name of product to show what have changed, or if it find nothing it's mean that record with this id not exist
-    if_product_exist BOOLEAN;
         BEGIN
             SELECT product_name INTO name_of_product FROM products WHERE product_id = id_product_to_remove;
             DELETE FROM products WHERE product_id = id_product_to_remove; 

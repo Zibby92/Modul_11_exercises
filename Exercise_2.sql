@@ -67,9 +67,9 @@ BEGIN
         INNER JOIN jobs ON emp.job_id = jobs.job_id;
 END high_salary;
 /
-SELECT * FROM employees where department_id = 90;
-/
 BEGIN
 DBMS_OUTPUT.PUT_LINE(high_salary.get_higher_dept_salary(30));
-DBMS_OUTPUT.PUT_LINE(high_salary.get_higher_dept_salary(90,'AD_VP'));
+DBMS_OUTPUT.PUT_LINE(high_salary.get_higher_dept_salary(90,'AD_'));
 END;
+/
+SET SERVEROUTPUT ON;
