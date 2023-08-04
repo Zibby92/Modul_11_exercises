@@ -1,0 +1,8 @@
+3 Sposoby deklaracji kursora:
+	-Kursor słabotypowany, tzn. wraz z pełnym poleceniem i bez instrukcji RETURN ( Np. CURSOR nazwa_kursora IS (SELECT nazwa_kolumny FROM nazwa_tabeli);)
+	-Kursor silnie typowany, tzn. wraz z instrukcją RETURN wskazującą co jakiego typu dane kursor będzie zwracał 
+	( Np. CURSOR nazwa_kursora RETURN nazwa_tabeli.nazwa_kolumny%TYPE IS nazwaz_tabelIS (SELECT nazwa_kolumny FROM nazwa_tabeli);
+	-Kursor silnie typowany bez dalszych instrukcji, wyłącznie ograniczony do określenia typu zwracanych danych (Np. CURSOR nazwa_kursora RETURN nazwa_tabeli%ROWTYPPE IS;
+Kursor słabo typowany bez instrukcji nie może powstać na poziomie inicjalizacji pakietu ponieważ program, a tym samym my, nie wiedzielibyśmy co ten kursor zwraca, prfzeciwnie do programoów przeciążonych jednak nie można stworzyć więcej kursorów o takiej samej nazwie a inncyh danych czy innej instrukcji select.
+
+Specyfikacja pakietu, czyli sekcja CREATE PACKAGE IS ... END; , zwana API - Application Programming Interface, czyli interfejs użytkownika, zawiera deklaracje do funkcji,procerow, obiektow itp. które są widoczne dla użytkownika czy programu który z tego API korzysta. Część BODY jest w całości ukryta dla osób postronnych i może zawierać obiekty które nie są w API zadeklarowane a z których np. korzystają funkcje zadeklarowane do poprawnego działania. Ważne by API było dobrze zaprojektowane i dawało dostęp do jaknajmniejszej części body, wyłącznie tej koniecznej do poprawnego wywoływania, ogranicza to możliwość zewnętrznej ingerencji a tym samym potencjalnych błędów które ten ktoś może wywołać. W skrócie specyfikacja to ta część widoczna, a body to logika która odpowiada za poprawne działanie tej widocznej części.
